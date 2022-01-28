@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useState } from 'react';
 import Board from './Board'
-import { calculateWinner } from './logic'
+import { calculateWinner } from './calculateWinner'
 
 const Game: FC = () => {
   const [history, setHistory] = useState<{squares: Array<string | null>}[]>(
