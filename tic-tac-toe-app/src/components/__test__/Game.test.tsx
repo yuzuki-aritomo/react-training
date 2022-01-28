@@ -1,12 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-import Game from '../Game';
+import Board from '../Board';
 
-describe('Game', () => {
-  test('renders App component', () => {
-    render(
-      <Game />
-      );
-  });
+describe('Board', () => {
+  
 });
