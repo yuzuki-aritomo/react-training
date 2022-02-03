@@ -26,7 +26,7 @@ const Game: FC = () => {
     setStepNumber(step)
     setXIsNext((step % 2) === 0,)
   }
-  // const History = history;
+
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
   const moves = history.map((step, move) => {
