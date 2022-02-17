@@ -2,9 +2,10 @@ import { FC } from 'react';
 import { useState } from 'react';
 import Board from './Board'
 import { calculateWinner } from './calculateWinner'
+import { squareType } from './Square';
 
 const Game: FC = () => {
-  const [history, setHistory] = useState<{squares: Array<string | null>}[]>(
+  const [history, setHistory] = useState<{squares: Array<squareType>}[]>(
     [{ squares: Array(9).fill(null) }]
     );
     const [stepNumber, setStepNumber] = useState<number>(0)

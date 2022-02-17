@@ -1,8 +1,8 @@
-import Square from './Square'
+import { squareType, Square } from './Square'
 import { FC } from 'react';
 
 type BoardProps = {
-  squares:  Array<string | null>
+  squares:  Array<squareType>
   onClick: (i: number) => void
 }
 const Board: FC<BoardProps> = ({ squares, onClick }) => {
