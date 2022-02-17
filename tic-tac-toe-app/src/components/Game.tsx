@@ -3,13 +3,14 @@ import { useState } from 'react';
 import Board from './Board'
 import { calculateWinner } from './calculateWinner'
 import { squareType } from './Square';
+import GameFooter from './GameFooter'
 
 const Game: FC = () => {
   const [history, setHistory] = useState<{squares: Array<squareType>}[]>(
     [{ squares: Array(9).fill(null) }]
-    );
-    const [stepNumber, setStepNumber] = useState<number>(0)
-    const [xIsNext, setXIsNext] = useState<boolean>(true)
+  );
+  const [stepNumber, setStepNumber] = useState<number>(0)
+  const [xIsNext, setXIsNext] = useState<boolean>(true)
   
   const handleClick = (i: number) => {
     const History = history.slice(0, stepNumber + 1);
@@ -54,10 +55,10 @@ const Game: FC = () => {
           onClick={(i: number) => handleClick(i)}
         />
       </div>
-      <div className="game-info">
-        <div>{ status }</div>
-        <ol>{ moves }</ol>
-      </div>
+      <GameFooter
+        status = { status }
+        moves = { moves }
+      />
     </div>
   );
 }
