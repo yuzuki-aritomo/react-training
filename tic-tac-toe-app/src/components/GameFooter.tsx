@@ -1,11 +1,34 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import { calculateWinner } from './calculateWinner'
+import { squareType } from './Square';
 
 type GameFooterType = {
-  status: String
-  moves: ReactNode
+  xIsNext: boolean
+  current: { squares:  squareType[]}
+  history: {squares: Array<squareType>}[]
+  jumpTo: (step: number) => void
 }
 
-const GameFooter: FC<GameFooterType> = ({status, moves}) => {
+const GameFooter: FC<GameFooterType> = ({xIsNext, current, history, jumpTo }) => {
+  
+  const winner = calculateWinner(current.squares);
+  const moves = history.map((step, move) => {
+    const desc = move ?
+      'Go to move #' + move :
+      'Go to game start';
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{desc}</button>
+      </li>
+    );
+  });
+  let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else {
+    status = 'Next player: ' + ( xIsNext ? 'X' : 'O');
+  }
+
   return(
     <div className="game-info">
       <div>{ status }</div>
